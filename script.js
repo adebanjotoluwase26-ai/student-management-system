@@ -1,53 +1,136 @@
-// Get elements from HTML
+// ========================================
+// GET ELEMENTS FROM HTML
+// ========================================
+
 const studentForm = document.getElementById("studentForm");
 const studentTable = document.getElementById("studentTable");
 const studentCount = document.getElementById("studentCount");
 const searchStudent = document.getElementById("searchStudent");
 const submitButton = document.getElementById("submitButton");
 
-// Get students from localStorage
+
+// ========================================
+// GET STUDENTS FROM LOCAL STORAGE
+// ========================================
+
 let students = JSON.parse(localStorage.getItem("students")) || [];
 
-// Keep track of the student being edited
+
+// ========================================
+// STUDENT ID COUNTER
+// ========================================
+
+let studentNumber =
+    Number(localStorage.getItem("studentNumber")) || 0;
+
+
+// ========================================
+// GENERATE STUDENT ID
+// ========================================
+
+function generateStudentId() {
+
+    studentNumber++;
+
+    localStorage.setItem(
+        "studentNumber",
+        studentNumber
+    );
+
+    const year = new Date().getFullYear();
+
+    return `STU-${year}-${String(studentNumber).padStart(3, "0")}`;
+}
+
+
+// ========================================
+// EDIT INDEX
+// ========================================
+
 let editIndex = -1;
 
-// Display students when page loads
+
+// ========================================
+// DISPLAY STUDENTS WHEN PAGE LOADS
+// ========================================
+
 displayStudents();
 
 
-// ===============================
+// ========================================
 // ADD / UPDATE STUDENT
-// ===============================
+// ========================================
 
-studentForm.addEventListener("submit", function(event) {
+studentForm.addEventListener("submit", function (event) {
 
     event.preventDefault();
 
     const student = {
+
         name: document.getElementById("studentName").value,
-        studentClass: document.getElementById("studentClass").value,
-        age: document.getElementById("age").value,
-        bloodType: document.getElementById("bloodType").value,
-        subject: document.getElementById("subject").value,
-        dob: document.getElementById("dob").value,
-        gender: document.getElementById("gender").value,
-        transport: document.getElementById("transport").value
+
+        studentClass:
+            document.getElementById("studentClass").value,
+
+        age:
+            document.getElementById("age").value,
+
+        bloodType:
+            document.getElementById("bloodType").value,
+
+        subject:
+            document.getElementById("subject").value,
+
+        dob:
+            document.getElementById("dob").value,
+
+        gender:
+            document.getElementById("gender").value,
+
+        phoneNo:
+            document.getElementById("PhoneNo").value
     };
 
 
-    // ADD STUDENT
+    // ========================================
+    // ADD NEW STUDENT
+    // ========================================
+
     if (editIndex === -1) {
+
+        student.studentId = generateStudentId();
 
         students.push(student);
 
-        alert("Student added successfully!");
+        localStorage.setItem(
+            "students",
+            JSON.stringify(students)
+        );
+
+        alert(
+            "Student added successfully!\n\n" +
+            "Student ID: " +
+            student.studentId
+        );
 
     }
 
+
+    // ========================================
     // UPDATE STUDENT
+    // ========================================
+
     else {
 
+        student.studentId =
+            students[editIndex].studentId;
+
         students[editIndex] = student;
+
+        localStorage.setItem(
+            "students",
+            JSON.stringify(students)
+        );
 
         alert("Student updated successfully!");
 
@@ -57,42 +140,34 @@ studentForm.addEventListener("submit", function(event) {
     }
 
 
-    // Save to localStorage
-    localStorage.setItem(
-        "students",
-        JSON.stringify(students)
-    );
-
-
-    // Display students
     displayStudents();
 
-
-    // Clear form
     studentForm.reset();
 
 });
 
 
-// ===============================
+// ========================================
 // DISPLAY STUDENTS
-// ===============================
+// ========================================
 
 function displayStudents(studentList = students) {
 
     studentTable.innerHTML = "";
 
+    studentList.forEach(function (student) {
 
-    studentList.forEach(function(student) {
+        const realIndex =
+            students.indexOf(student);
 
-        const realIndex = students.indexOf(student);
-
-        const row = document.createElement("tr");
-
+        const row =
+            document.createElement("tr");
 
         row.innerHTML = `
 
             <td>${realIndex + 1}</td>
+
+            <td>${student.studentId || "N/A"}</td>
 
             <td>${student.name}</td>
 
@@ -108,7 +183,7 @@ function displayStudents(studentList = students) {
 
             <td>${student.gender}</td>
 
-            <td>${student.transport}</td>
+            <td>${student.phoneNo}</td>
 
             <td>
 
@@ -125,58 +200,50 @@ function displayStudents(studentList = students) {
                 </button>
 
             </td>
-
         `;
-
 
         studentTable.appendChild(row);
 
     });
 
-
-    // Update student counter
-    studentCount.textContent = students.length;
-
+    studentCount.textContent =
+        students.length;
 }
 
 
-// ===============================
+// ========================================
 // DELETE STUDENT
-// ===============================
+// ========================================
 
 function deleteStudent(index) {
 
-    const confirmDelete = confirm(
-        "Are you sure you want to delete this student?"
-    );
-
+    const confirmDelete =
+        confirm(
+            "Are you sure you want to delete this student?"
+        );
 
     if (confirmDelete) {
 
         students.splice(index, 1);
-
 
         localStorage.setItem(
             "students",
             JSON.stringify(students)
         );
 
-
         displayStudents();
 
     }
-
 }
 
 
-// ===============================
+// ========================================
 // EDIT STUDENT
-// ===============================
+// ========================================
 
 function editStudent(index) {
 
     const student = students[index];
-
 
     document.getElementById("studentName").value =
         student.name;
@@ -199,59 +266,70 @@ function editStudent(index) {
     document.getElementById("gender").value =
         student.gender;
 
-    document.getElementById("transport").value =
-        student.transport;
-
+    document.getElementById("PhoneNo").value =
+        student.phoneNo;
 
     editIndex = index;
 
-
-    submitButton.textContent = "Update Student";
-
+    submitButton.textContent =
+        "Update Student";
 
     window.scrollTo({
         top: 0,
         behavior: "smooth"
     });
-
 }
 
 
-// ===============================
+// ========================================
 // SEARCH STUDENTS
-// ===============================
+// ========================================
 
-searchStudent.addEventListener("input", function() {
+searchStudent.addEventListener(
+    "input",
+    function () {
 
-    const searchValue =
-        searchStudent.value.toLowerCase();
+        const searchValue =
+            searchStudent.value.toLowerCase();
 
+        const filteredStudents =
+            students.filter(function (student) {
 
-    const filteredStudents = students.filter(function(student) {
+                return (
 
-        return (
+                    student.name
+                        .toLowerCase()
+                        .includes(searchValue)
 
-            student.name
-                .toLowerCase()
-                .includes(searchValue)
+                    ||
 
-            ||
+                    student.studentClass
+                        .toLowerCase()
+                        .includes(searchValue)
 
-            student.studentClass
-                .toLowerCase()
-                .includes(searchValue)
+                    ||
 
-            ||
+                    student.subject
+                        .toLowerCase()
+                        .includes(searchValue)
 
-            student.subject
-                .toLowerCase()
-                .includes(searchValue)
+                    ||
 
-        );
+                    (student.studentId || "")
+                        .toLowerCase()
+                        .includes(searchValue)
 
-    });
+                    ||
 
+                    (student.phoneNo || "")
+                        .toLowerCase()
+                        .includes(searchValue)
 
-    displayStudents(filteredStudents);
+                );
 
-});
+            });
+
+        displayStudents(filteredStudents);
+
+    }
+);
