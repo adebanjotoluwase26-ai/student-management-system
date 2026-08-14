@@ -1,0 +1,172 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8;
+    color: #222;
+}
+
+
+/* Header */
+
+header {
+    background-color: #003366;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+header h1 {
+    margin: 0;
+}
+
+header p {
+    margin-bottom: 0;
+}
+
+
+/* Main */
+
+main {
+    width: 95%;
+    max-width: 1200px;
+    margin: 30px auto;
+}
+
+
+/* Registration Form */
+
+.form-section {
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+.form-section h2 {
+    text-align: center;
+    color: #003366;
+}
+
+form {
+    display: grid;
+    gap: 10px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input,
+select {
+    padding: 10px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+button {
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #003366;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0055a5;
+}
+
+
+/* Student Section */
+
+.student-section {
+    margin-top: 30px;
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+.student-section h2 {
+    text-align: center;
+    color: #003366;
+}
+
+.student-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#searchStudent {
+    width: 250px;
+}
+
+
+/* Table */
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #003366;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+
+/* Edit button */
+
+.edit-btn {
+    background-color: #e6a700;
+    margin-right: 5px;
+}
+
+.edit-btn:hover {
+    background-color: #c58e00;
+}
+
+
+/* Delete button */
+
+.delete-btn {
+    background-color: #cc0000;
+}
+
+.delete-btn:hover {
+    background-color: #990000;
+}
+
+
+/* Footer */
+
+footer {
+    text-align: center;
+    background-color: #003366;
+    color: white;
+    padding: 15px;
+    margin-top: 30px;
+}

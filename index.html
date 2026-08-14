@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Management System</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>The Ambassadors School, Ota</h1>
+        <p>Student Management System</p>
+    </header>
+
+    <main>
+
+        <!-- Registration Form -->
+        <section class="form-section">
+
+            <h2>Student Registration</h2>
+
+            <form id="studentForm">
+
+                <label for="studentName">Student Name</label>
+                <input type="text" id="studentName" required>
+
+                <label for="studentClass">Student Class</label>
+                <input type="text" id="studentClass" required>
+
+                <label for="age">Age</label>
+                <input type="number" id="age" required>
+
+                <label for="bloodType">Blood Type</label>
+                <input type="text" id="bloodType">
+
+                <label for="subject">Subject</label>
+                <input type="text" id="subject">
+
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob">
+
+                <label for="gender">Gender</label>
+                <select id="gender" required>
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+
+                <label for="transport">Transportation</label>
+                <select id="transport">
+                    <option value="">Select Transportation</option>
+                    <option value="Bicycle">Bicycle</option>
+                    <option value="Bus">Bus</option>
+                    <option value="Car">Car</option>
+                    <option value="Plane">Plane</option>
+                </select>
+
+                <button type="submit" id="submitButton">
+                    Add Student
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- Student Management -->
+        <section class="student-section">
+
+            <h2>Registered Students</h2>
+
+            <div class="student-info">
+                <h3>
+                    Total Students:
+                    <span id="studentCount">0</span>
+                </h3>
+
+                <input
+                    type="text"
+                    id="searchStudent"
+                    placeholder="Search student..."
+                >
+            </div>
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>S/N</th>
+                            <th>Name</th>
+                            <th>Class</th>
+                            <th>Age</th>
+                            <th>Blood Type</th>
+                            <th>Subject</th>
+                            <th>DOB</th>
+                            <th>Gender</th>
+                            <th>Transport</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="studentTable">
+                        <!-- JavaScript will add students here -->
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        <p>Thanks for your cooperation</p>
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
