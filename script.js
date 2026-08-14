@@ -1,70 +1,51 @@
 // Get elements from HTML
-
 const studentForm = document.getElementById("studentForm");
-
 const studentTable = document.getElementById("studentTable");
-
 const studentCount = document.getElementById("studentCount");
-
 const searchStudent = document.getElementById("searchStudent");
-
 const submitButton = document.getElementById("submitButton");
 
-
 // Get students from localStorage
-
 let students = JSON.parse(localStorage.getItem("students")) || [];
 
-
 // Keep track of the student being edited
-
 let editIndex = -1;
 
-
 // Display students when page loads
-
 displayStudents();
 
 
-// Add student
+// ===============================
+// ADD / UPDATE STUDENT
+// ===============================
 
 studentForm.addEventListener("submit", function(event) {
 
     event.preventDefault();
 
-
-    // Get form values
-
     const student = {
-
         name: document.getElementById("studentName").value,
-
         studentClass: document.getElementById("studentClass").value,
-
         age: document.getElementById("age").value,
-
         bloodType: document.getElementById("bloodType").value,
-
         subject: document.getElementById("subject").value,
-
         dob: document.getElementById("dob").value,
-
         gender: document.getElementById("gender").value,
-
         transport: document.getElementById("transport").value
-
     };
 
 
-    // Check if editing
-
+    // ADD STUDENT
     if (editIndex === -1) {
 
         students.push(student);
 
         alert("Student added successfully!");
 
-    } else {
+    }
+
+    // UPDATE STUDENT
+    else {
 
         students[editIndex] = student;
 
@@ -73,12 +54,10 @@ studentForm.addEventListener("submit", function(event) {
         editIndex = -1;
 
         submitButton.textContent = "Add Student";
-
     }
 
 
-    // Save students
-
+    // Save to localStorage
     localStorage.setItem(
         "students",
         JSON.stringify(students)
@@ -86,32 +65,34 @@ studentForm.addEventListener("submit", function(event) {
 
 
     // Display students
-
     displayStudents();
 
 
     // Clear form
-
     studentForm.reset();
 
 });
 
 
-// Display students
+// ===============================
+// DISPLAY STUDENTS
+// ===============================
 
 function displayStudents(studentList = students) {
 
     studentTable.innerHTML = "";
 
 
-    studentList.forEach(function(student, index) {
+    studentList.forEach(function(student) {
+
+        const realIndex = students.indexOf(student);
 
         const row = document.createElement("tr");
 
 
         row.innerHTML = `
 
-            <td>${index + 1}</td>
+            <td>${realIndex + 1}</td>
 
             <td>${student.name}</td>
 
@@ -133,13 +114,13 @@ function displayStudents(studentList = students) {
 
                 <button
                     class="edit-btn"
-                    onclick="editStudent(${index})">
+                    onclick="editStudent(${realIndex})">
                     Edit
                 </button>
 
                 <button
                     class="delete-btn"
-                    onclick="deleteStudent(${index})">
+                    onclick="deleteStudent(${realIndex})">
                     Delete
                 </button>
 
@@ -154,13 +135,14 @@ function displayStudents(studentList = students) {
 
 
     // Update student counter
-
     studentCount.textContent = students.length;
 
 }
 
 
-// Delete student
+// ===============================
+// DELETE STUDENT
+// ===============================
 
 function deleteStudent(index) {
 
@@ -187,7 +169,9 @@ function deleteStudent(index) {
 }
 
 
-// Edit student
+// ===============================
+// EDIT STUDENT
+// ===============================
 
 function editStudent(index) {
 
@@ -233,7 +217,9 @@ function editStudent(index) {
 }
 
 
-// Search students
+// ===============================
+// SEARCH STUDENTS
+// ===============================
 
 searchStudent.addEventListener("input", function() {
 
