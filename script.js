@@ -65,6 +65,8 @@ studentForm.addEventListener("submit", function (event) {
 
     event.preventDefault();
 
+
+    // Get information from the form
     const student = {
 
         name: document.getElementById("studentName").value,
@@ -98,15 +100,19 @@ studentForm.addEventListener("submit", function (event) {
 
     if (editIndex === -1) {
 
+        // Generate ID automatically
         student.studentId = generateStudentId();
 
+        // Add student
         students.push(student);
 
+        // Save students
         localStorage.setItem(
             "students",
             JSON.stringify(students)
         );
 
+        // Show success message
         alert(
             "Student added successfully!\n\n" +
             "Student ID: " +
@@ -122,26 +128,35 @@ studentForm.addEventListener("submit", function (event) {
 
     else {
 
+        // Keep the student's existing ID
         student.studentId =
             students[editIndex].studentId;
 
         students[editIndex] = student;
 
+
+        // Save updated students
         localStorage.setItem(
             "students",
             JSON.stringify(students)
         );
 
+
         alert("Student updated successfully!");
 
+
+        // Reset edit mode
         editIndex = -1;
 
         submitButton.textContent = "Add Student";
     }
 
 
+    // Display students
     displayStudents();
 
+
+    // Clear form
     studentForm.reset();
 
 });
@@ -155,13 +170,16 @@ function displayStudents(studentList = students) {
 
     studentTable.innerHTML = "";
 
+
     studentList.forEach(function (student) {
 
         const realIndex =
             students.indexOf(student);
 
+
         const row =
             document.createElement("tr");
+
 
         row.innerHTML = `
 
@@ -202,10 +220,13 @@ function displayStudents(studentList = students) {
             </td>
         `;
 
+
         studentTable.appendChild(row);
 
     });
 
+
+    // Update student count
     studentCount.textContent =
         students.length;
 }
@@ -222,14 +243,17 @@ function deleteStudent(index) {
             "Are you sure you want to delete this student?"
         );
 
+
     if (confirmDelete) {
 
         students.splice(index, 1);
+
 
         localStorage.setItem(
             "students",
             JSON.stringify(students)
         );
+
 
         displayStudents();
 
@@ -244,6 +268,7 @@ function deleteStudent(index) {
 function editStudent(index) {
 
     const student = students[index];
+
 
     document.getElementById("studentName").value =
         student.name;
@@ -269,11 +294,17 @@ function editStudent(index) {
     document.getElementById("PhoneNo").value =
         student.phoneNo;
 
+
+    // Remember which student is being edited
     editIndex = index;
 
+
+    // Change button text
     submitButton.textContent =
         "Update Student";
 
+
+    // Scroll to form
     window.scrollTo({
         top: 0,
         behavior: "smooth"
@@ -291,6 +322,7 @@ searchStudent.addEventListener(
 
         const searchValue =
             searchStudent.value.toLowerCase();
+
 
         const filteredStudents =
             students.filter(function (student) {
@@ -328,6 +360,7 @@ searchStudent.addEventListener(
                 );
 
             });
+
 
         displayStudents(filteredStudents);
 

@@ -29,8 +29,12 @@
                 <input type="text" id="studentName" required>
 
                 <label for="studentClass">Student Class</label>
-                <input type="text" id="studentClass" required>
-
+                <select id="studentClass" required>
+                    <option value="">select class</option>
+                    <option value="SS1">SS1</option>
+                    <option value="SS2">SS2</option>
+                    <option value="SS3"> SS3</option>
+                    </select>   
                 <label for="age">Age</label>
                 <input type="number" id="age" required>
 
@@ -38,8 +42,25 @@
                 <input type="text" id="bloodType">
 
                 <label for="subject">Subject</label>
-                <input type="text" id="subject">
-
+                <select id="subject" required>
+                    <option value="">Select Subject</option>
+                    <option value="Mathematics">Mathematics</option>
+                    <option value="English">English</option>
+                    <option value="Civic Education"> civic Eduation</option>
+                    <option value="Biology">Biology</option>
+                    <option value="Chemistry">Chemistry</option>
+                    <option value="Physics">Physics</option>
+                    <option value="FurtherMaths">FurtherMaths</option>
+                    <option value="Government"> Goverment</option>
+                    <option value="Literature-in-english">Literature-in-english</option>
+                    <option value="History">History</option>
+                    <option value="CRS">CRS</option>
+                    <option value="Economics"> Economics</option>
+                    <option value="Finanical Accounting">Finanical Accounting</option>
+                    <option value="Commerce">Commerce</option>
+                    <option value="Booking Keeping">Booking Keeping</option>
+                    <option value="Marketing"> Marketing</option>
+                </select>    
                 <label for="dob">Date of Birth</label>
                 <input type="date" id="dob">
 
@@ -50,14 +71,9 @@
                     <option value="Female">Female</option>
                 </select>
 
-                <label for="transport">Transportation</label>
-                <select id="transport">
-                    <option value="">Select Transportation</option>
-                    <option value="Bicycle">Bicycle</option>
-                    <option value="Bus">Bus</option>
-                    <option value="Car">Car</option>
-                    <option value="Plane">Plane</option>
-                </select>
+                <label for="PhoneNo">Phone No</label>
+                <input type="text" maxlength="11" id="PhoneNo" placeholder="Phone number" required>
+                    
 
                 <button type="submit" id="submitButton">
                     Add Student
@@ -93,6 +109,7 @@
                     <thead>
                         <tr>
                             <th>S/N</th>
+                            <th>Student ID</th>
                             <th>Name</th>
                             <th>Class</th>
                             <th>Age</th>
@@ -100,7 +117,7 @@
                             <th>Subject</th>
                             <th>DOB</th>
                             <th>Gender</th>
-                            <th>Transport</th>
+                            <th>Phone No</th>
                             <th>Action</th>
                         </tr>
                     </thead>
