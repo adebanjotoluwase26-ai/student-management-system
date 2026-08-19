@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Registered Students</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>The Ambassadors School, Ota</h1>
+        <p>Registered Students</p>
+    </header>
+
+    <main>
+
+        <section class="student-section">
+
+            <h2>Registered Students</h2>
+
+            <div class="student-info">
+
+                <h3>
+                    Total Students:
+                    <span id="studentCount">0</span>
+                </h3>
+
+                <input
+                    type="text"
+                    id="searchStudent"
+                    placeholder="Search student..."
+                >
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>S/N</th>
+                            <th>Student ID</th>
+                            <th>Student full Name</th>
+                            <th>Class</th>
+                            <th>Home address</th>
+                            <th>Email Address</th>
+                            <th>Subjects</th>
+                            <th>DOB</th>
+                            <th>Gender</th>
+                            <th>parent/Guardian Phone No</th>
+                            <th>Action</th>
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="studentTable">
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <div class="navigation">
+
+            <a href="index.html">
+                <button type="button">
+                    ← Register New Student
+                </button>
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <footer>
+        <p>Thanks for your cooperation</p>
+    </footer>
+
+
+    <script src="students.js"></script>
+
+</body>
+</html>

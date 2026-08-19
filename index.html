@@ -25,7 +25,7 @@
 
             <form id="studentForm">
 
-                <label for="studentName">Student Name</label>
+                <label for="studentName">Student Full Name</label>
                 <input type="text" id="studentName" required>
 
                 <label for="studentClass">Student Class</label>
@@ -34,33 +34,103 @@
                     <option value="SS1">SS1</option>
                     <option value="SS2">SS2</option>
                     <option value="SS3"> SS3</option>
-                    </select>   
-                <label for="age">Age</label>
-                <input type="number" id="age" required>
+                    </select> 
+                      
+                <label for="homeaddress">Home address</label>
+                <textarea id="homeAddress" rows="3"
+                    placeholder="Enter student's home address"required>
+                </textarea>
 
-                <label for="bloodType">Blood Type</label>
-                <input type="text" id="bloodType">
+                <label for="email">Email address</label>
+                <input type="email" id="email" placeholder="Enter your email address">
 
-                <label for="subject">Subject</label>
-                <select id="subject" required>
-                    <option value="">Select Subject</option>
-                    <option value="Mathematics">Mathematics</option>
-                    <option value="English">English</option>
-                    <option value="Civic Education"> civic Eduation</option>
-                    <option value="Biology">Biology</option>
-                    <option value="Chemistry">Chemistry</option>
-                    <option value="Physics">Physics</option>
-                    <option value="FurtherMaths">FurtherMaths</option>
-                    <option value="Government"> Goverment</option>
-                    <option value="Literature-in-english">Literature-in-english</option>
-                    <option value="History">History</option>
-                    <option value="CRS">CRS</option>
-                    <option value="Economics"> Economics</option>
-                    <option value="Finanical Accounting">Finanical Accounting</option>
-                    <option value="Commerce">Commerce</option>
-                    <option value="Booking Keeping">Booking Keeping</option>
-                    <option value="Marketing"> Marketing</option>
-                </select>    
+                
+                <label>Subject</label>
+
+<div class="subjects-container">
+
+    <label>
+        <input type="checkbox" name="subjects" value="Mathematics">
+        Mathematics
+    </label>
+
+    <label>
+        <input type="checkbox" name="subjects" value="English">
+        English
+    </label>
+
+    <label>
+        <input type="checkbox" name="subjects" value="Civic Education">
+        Civic Education
+    </label>
+
+    <label>
+        <input type="checkbox" name="subjects" value="Biology">
+        Biology
+    </label>
+
+    <label>
+        <input type="checkbox" name="subjects" value="Chemistry">
+        Chemistry
+    </label>
+
+    <label>
+        <input type="checkbox" name="subjects" value="Physics">
+        Physics
+    </label>
+
+    <label>
+        <input type="checkbox" name="subjects" value="Further Mathematics">
+        Further Mathematics
+    </label>
+
+    <label>
+        <input type="checkbox" name="subjects" value="Government">
+        Government
+    </label>
+
+    <label>
+        <input type="checkbox" name="subjects" value="Literature-in-English">
+        Literature-in-English
+    </label>
+
+    <label>
+        <input type="checkbox" name="subjects" value="History">
+        History
+    </label>
+
+    <label>
+        <input type="checkbox" name="subjects" value="CRS">
+        CRS
+    </label>
+
+    <label>
+        <input type="checkbox" name="subjects" value="Economics">
+        Economics
+    </label>
+
+    <label>
+        <input type="checkbox" name="subjects" value="Financial Accounting">
+        Financial Accounting
+    </label>
+
+    <label>
+        <input type="checkbox" name="subjects" value="Commerce">
+        Commerce
+    </label>
+
+    <label>
+        <input type="checkbox" name="subjects" value="Book Keeping">
+        Book Keeping
+    </label>
+
+    <label>
+        <input type="checkbox" name="subjects" value="Marketing">
+        Marketing
+    </label>
+
+</div> 
+               
                 <label for="dob">Date of Birth</label>
                 <input type="date" id="dob">
 
@@ -71,8 +141,8 @@
                     <option value="Female">Female</option>
                 </select>
 
-                <label for="PhoneNo">Phone No</label>
-                <input type="text" maxlength="11" id="PhoneNo" placeholder="Phone number" required>
+                <label for="PhoneNo">Parent/Guardian Phone Number</label>
+                <input type="text" maxlength="11" id="PhoneNo" placeholder="Enter parent/Guardian Phone number" required>
                     
 
                 <button type="submit" id="submitButton">
@@ -82,62 +152,11 @@
             </form>
 
         </section>
-
-
-        <!-- Student Management -->
-        <section class="student-section">
-
-            <h2>Registered Students</h2>
-
-            <div class="student-info">
-                <h3>
-                    Total Students:
-                    <span id="studentCount">0</span>
-                </h3>
-
-                <input
-                    type="text"
-                    id="searchStudent"
-                    placeholder="Search student..."
-                >
-            </div>
-
-            <div class="table-container">
-
-                <table>
-
-                    <thead>
-                        <tr>
-                            <th>S/N</th>
-                            <th>Student ID</th>
-                            <th>Name</th>
-                            <th>Class</th>
-                            <th>Age</th>
-                            <th>Blood Type</th>
-                            <th>Subject</th>
-                            <th>DOB</th>
-                            <th>Gender</th>
-                            <th>Phone No</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-
-                    <tbody id="studentTable">
-                        <!-- JavaScript will add students here -->
-                    </tbody>
-
-                </table>
-
-            </div>
-
-        </section>
-
+        
     </main>
-
-
-    <footer>
-        <p>Thanks for your cooperation</p>
-    </footer>
+        <footer>
+            <p>Thanks for your cooperation</p>
+        </footer>
 
 
     <script src="script.js"></script>
