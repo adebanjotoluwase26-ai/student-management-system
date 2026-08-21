@@ -54,7 +54,7 @@ if (student) {
         <div class="student-profile-card">
 
             <h3>
-                ${student.name || ""}
+                ${student.firstName || ""} ${student.surname || ""}
             </h3>
 
             <p>

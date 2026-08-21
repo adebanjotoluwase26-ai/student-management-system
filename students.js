@@ -68,7 +68,7 @@ function displayStudents(studentList = students) {
             </td>
 
             <td>
-                ${student.name || ""}
+                ${student.firstName || ""} ${student.surname || ""}
             </td>
 
             <td>
@@ -231,10 +231,11 @@ searchStudent.addEventListener(
                     ||
 
                     // Name
-                    (student.name || "")
-                        .toLowerCase()
-                        .includes(searchValue)
-
+            (
+                `${student.firstName || ""} ${student.surname || ""}`
+            )
+                 .toLowerCase()
+                .includes(searchValue)
 
                     ||
 

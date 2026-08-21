@@ -58,8 +58,11 @@ if (savedEditIndex !== null) {
 
     if (student) {
 
-    document.getElementById("studentName").value =
-        student.name || "";
+    document.getElementById("firstName").value =
+        student.firstName;
+
+    document.getElementById("surname").value =
+        student.surname;
 
     document.getElementById("studentClass").value =
         student.studentClass || "";
@@ -86,17 +89,17 @@ document.querySelectorAll('input[name="subjects"]').forEach(function (checkbox) 
         student.phoneNo || "";
 
     // Select the student's subjects
-    const selectedSubjects =
-        student.subjects || [];
+    const subjects =
+    student.subjects || [];
 
-    document
-        .querySelectorAll('input[name="subjects"]')
-        .forEach(function (checkbox) {
+document.querySelectorAll(
+    'input[name="subjects"]'
+    ).forEach(function (checkbox) {
 
-            checkbox.checked =
-                selectedSubjects.includes(checkbox.value);
+    checkbox.checked =
+        subjects.includes(checkbox.value);
 
-        });
+});
 
     submitButton.textContent =
         "Update Student";
@@ -120,8 +123,11 @@ studentForm.addEventListener("submit", function (event) {
 
    const student = {
 
-    name:
-        document.getElementById("studentName").value,
+    firstName:
+        document.getElementById("firstName").value,
+
+    surname:
+        document.getElementById("surname").value,
 
     studentClass:
         document.getElementById("studentClass").value,
